@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Grupo404.Abstracciones.ModelosParaUI.ContadorDto>
+
+@{
+    ViewBag.Title = "Listado de Contadores";
+}
+
+<h2>Contadores Registrados</h2>
+
+<p>
+    @Html.ActionLink("Registrar Nuevo Contador", "CrearContador", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Número de Colegio</th>
+            <th>Correo Electrónico</th>
+            <th>Teléfono Celular</th>
+            <th>Teléfono Secundario</th>
+            <th>Método de Contacto</th>
+            <th>Fecha de Registro</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdentificacionContador</td>
+                <td>@item.NombreContador</td>
+                <td>@item.PrimerApellidoContador</td>
+                <td>@item.SegundoApellidoContador</td>
+                <td>@item.NumeroDeColegio</td>
+                <td>@item.CorreoElectronico</td>
+                <td>@item.TelefonoCelular</td>
+                <td>@item.TelefonoSecundario</td>
+                <td>
+                    @{
+                        string metodo = "Desconocido";
+                        if (item.MetodoDeContacto == 1)
+                        {
+                            metodo = "Llamada";
+                        }
+                        else if (item.MetodoDeContacto == 2)
+                        {
+                            metodo = "Mensaje de texto";
+                        }
+                        else if (item.MetodoDeContacto == 3)
+                        {
+                            metodo = "Correo electrónico";
+                        }
+                        else if (item.MetodoDeContacto == 4)
+                        {
+                            metodo = "Whatsapp";
+                        }
+                    }
+                    @metodo
+                </td>
+
+                <td>@item.FechaDeRegistro.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <span class="badge @(item.Estado ? "bg-success" : "bg-danger")">
+                        @(item.Estado ? "Activo" : "Inactivo")
+                    </span>
+                </td>
+                <td>
+                    @Html.ActionLink("Editar",
+                                     "EditarContador",
+                                     new { id = item.IdContador },
+                                     new { @class = "btn btn-warning btn-sm" })
+
+                    @using (Html.BeginForm("CambiarEstado", "Contador", new { id = item.IdContador }, FormMethod.Post,new { @class = "d-inline" }))
+                    {
+                        <button type="submit"
+                                class="btn btn-sm @(item.Estado ? "btn-danger" : "btn-success") ms-1">
+                            @(item.Estado ? "Inactivar" : "Activar")
+                        </button>
+                    }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

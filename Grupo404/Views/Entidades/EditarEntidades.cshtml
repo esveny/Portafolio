@@ -1,0 +1,72 @@
+﻿@model Grupo404.Abstracciones.ModelosParaUI.EntidadesDto
+
+@{
+    ViewBag.Title = "Editar Entidad";
+}
+
+<h2>Editar Entidad</h2>
+
+@using (Html.BeginForm("Edit", "Entidades", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Datos de la Entidad</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdEntidad)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NombreEntidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NombreEntidad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NombreEntidad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdTipoEntidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.IdTipoEntidad,
+                    ViewBag.TiposEntidad as List<SelectListItem>,
+                    "-- Seleccione un tipo de entidad --",
+                    new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdTipoEntidad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <div class="form-check form-switch">
+                @Html.CheckBoxFor(model => model.Estado, new { @class = "form-check-input", id = "EstadoCheckbox" })
+                <label class="form-check-label" for="EstadoCheckbox">
+                    @(Model.Estado ? "Activo" : "Inactivo")
+                </label>
+            </div>
+            @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+        </div>
+
+        @Html.HiddenFor(model => model.CodigoEntidad)
+        @Html.HiddenFor(model => model.TelefonoEntidad)
+        @Html.HiddenFor(model => model.CorreoElectronico)
+        @Html.HiddenFor(model => model.Direccion)
+        @Html.HiddenFor(model => model.FechaDeRegistro)
+        @Html.HiddenFor(model => model.FechaDeModificacion)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a href="@Url.Action("ListarEntidades", "Entidades")" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </div>
+
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

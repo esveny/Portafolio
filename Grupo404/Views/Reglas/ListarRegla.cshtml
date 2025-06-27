@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Grupo404.Abstracciones.ModelosParaUI.ReglasDto>
+
+@{
+    ViewBag.Title = "ListarRegla";
+}
+
+<h2 class="text-success text-center mb-4">Listado de Reglas</h2>
+
+@if (!Model.Any())
+{
+    <p class="text-muted text-center">No hay reglas registradas actualmente.</p>
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title text-primary">@item.Nombre</h5>
+                <p class="card-text mb-1"><strong>Tipo de Entidad:</strong> @item.NombreEnt</p>
+                <p class="card-text mb-1"><strong>Descripción:</strong> @item.Descripcion</p>
+                <p class="card-text mb-1"><strong>Valor:</strong> @item.Valor</p>
+                <p class="card-text mb-1"><strong>Tipo de Acción:</strong> @(item.TipoDeAccion == 1 ? "Mínimo" : "Máximo")</p>
+                <p class="card-text mb-1"><strong>Fecha de Registro:</strong> @item.FechaDeRegistro.ToString("dd/MM/yyyy")</p>
+                <p class="card-text mb-3">
+                    <strong>Estado:</strong>
+                    <span class="badge @(item.Estado ? "bg-success" : "bg-danger")">
+                        @(item.Estado ? "Activo" : "Inactivo")
+                    </span>
+                </p>
+
+                <div class="d-flex gap-2">
+                    @Html.ActionLink("Editar", "ActualizarRegla", new { id = item.IdRegla, idTipoEntidad = ViewBag.IdTipoEntidad }, new { @class = "btn btn-primary btn-sm" })
+
+                    @using (Html.BeginForm("CambiarEstado", "Reglas", new { id = item.IdRegla, idTipoEntidad = ViewBag.IdTipoEntidad }, FormMethod.Post, new { @class = "d-inline" }))
+                    {
+                        <button type="submit" class="btn btn-sm @(item.Estado ? "btn-danger" : "btn-success")">
+                            @(item.Estado ? "Inactivar" : "Activar")
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}

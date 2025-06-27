@@ -1,0 +1,43 @@
+﻿@model Grupo404.Abstracciones.ModelosParaUI.TipoEntidadesDto
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Tipo de Entidad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>@Html.DisplayNameFor(model => model.NombreTipoEntidad)</dt>
+        <dd>@Html.DisplayFor(model => model.NombreTipoEntidad)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Descripcion)</dt>
+        <dd>@Html.DisplayFor(model => model.Descripcion)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.FechaDeRegistro)</dt>
+        <dd>@Model.FechaDeRegistro.ToString("dd/MM/yyyy HH:mm")</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.FechaDeModificacion)</dt>
+        <dd>
+            @(Model.FechaDeModificacion.HasValue
+                ? Model.FechaDeModificacion.Value.ToString("dd/MM/yyyy HH:mm")
+                : "Sin modificar")
+        </dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Estado)</dt>
+        <dd>
+            <span class="badge @(Model.Estado ? "bg-success" : "bg-danger")">
+                @(Model.Estado ? "Activo" : "Inactivo")
+            </span>
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Editar", "Editar", "TipoEntidades", new { IdTipoEntidad = Model.IdTipoEntidad }, new { @class = "btn btn-warning" }) |
+    <a href="@Url.Action("ListarTipoEntidades")" class="btn btn-secondary">Regresar</a>
+</p>

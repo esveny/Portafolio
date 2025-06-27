@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Grupo404.Abstracciones.ModelosParaUI.TipoEntidadesDto>
+
+@{
+    ViewBag.Title = "Listar Tipos de Entidades";
+}
+
+<h2>Tipos de Entidades</h2>
+
+<p>
+    @Html.ActionLink("Agregar Nuevo Tipo", "CrearTipoEntidades", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.NombreTipoEntidad)</th>
+            <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.FechaDeRegistro)</th>
+            <th>@Html.DisplayNameFor(model => model.FechaDeModificacion)</th>
+            <th>@Html.DisplayNameFor(model => model.Estado)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NombreTipoEntidad</td>
+
+                <td>
+                    @(item.Descripcion.Length > 5 ? item.Descripcion.Substring(0, 5) + "..." : item.Descripcion)
+                </td>
+
+                <td>@item.FechaDeRegistro.ToString("dd/MM/yyyy HH:mm")</td>
+
+                <td>
+                    @(item.FechaDeModificacion.HasValue
+                        ? item.FechaDeModificacion.Value.ToString("dd/MM/yyyy HH:mm")
+                        : "Sin modificar")
+                </td>
+
+                <td>
+                    <span class="badge @(item.Estado ? "bg-success" : "bg-danger")">
+                        @(item.Estado ? "Activo" : "Inactivo")
+                    </span>
+                </td>
+
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new { IdTipoEntidad = item.IdTipoEntidad }, new { @class = "btn btn-warning btn-sm" }) |
+                    @Html.ActionLink("Detalles", "Detalles", new { IdTipoEntidad = item.IdTipoEntidad }, new { @class = "btn btn-info btn-sm" }) |
+                    @Html.ActionLink("Ver Reglas", "ListarRegla", "Reglas", new { idTipoEntidad = item.IdTipoEntidad }, new { @class = "btn btn-outline-primary btn-sm" }) |
+                    @Html.ActionLink("Crear Regla", "CrearRegla", "Reglas", new { idTipoEntidad = item.IdTipoEntidad }, new { @class = "btn btn-success btn-sm" })
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

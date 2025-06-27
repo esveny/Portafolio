@@ -1,0 +1,77 @@
+﻿@model Grupo404.Abstracciones.ModelosParaUI.ReglasDto
+
+@{
+    ViewBag.Title = "Crear Regla";
+}
+
+<h2>Crear Regla</h2>
+
+@using (Html.BeginForm("CrearRegla", "Reglas", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.FechaDeRegistro)
+    @Html.HiddenFor(m => m.FechaDeModificacion)
+    @Html.HiddenFor(m => m.Estado)
+    @Html.HiddenFor(m => m.IdTipoEntidad) <!-- Para que se envíe el valor al controlador -->
+
+    <div class="form-horizontal">
+        <h4>Datos de la Regla</h4>
+        <hr />
+        @Html.ValidationSummary(false, "Corrige los siguientes errores:", new { @class = "text-danger" })
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Error
+            </div>
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdTipoEntidad, "Tipo de Entidad", htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.IdTipoEntidad,
+                (IEnumerable<SelectListItem>)ViewBag.TiposEntidad,
+                "Seleccione un tipo de entidad",
+                new { @class = "form-control", @disabled = "disabled" }) <!-- deshabilitado -->
+            @Html.ValidationMessageFor(model => model.IdTipoEntidad, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label" })
+            @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control", rows = 3 })
+            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Valor, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipoDeAccion, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.TipoDeAccion,
+                new SelectList(new[] {
+                    new SelectListItem { Value = "1", Text = "Mínimo" },
+                    new SelectListItem { Value = "2", Text = "Máximo" }
+                }, "Value", "Text"),
+                "Seleccione el tipo de acción",
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TipoDeAccion, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Crear" class="btn btn-primary" />
+            @Html.ActionLink("Cancelar", "ListarRegla", new { idTipoEntidad = Model.IdTipoEntidad }, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

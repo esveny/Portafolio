@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Grupo404.Abstracciones.ModelosParaUI.ReservaLiquidezDto>
+
+@{
+    ViewBag.Title = "Reservas de Liquidez";
+}
+
+<h2>Reservas de Liquidez</h2>
+
+<p>
+    @Html.ActionLink("Agregar Nueva Reserva", "RegistrarReservaLiquidez", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Entidad</th>
+            <th>Monto de Reserva</th>
+            <th>Beneficiarios</th>
+            <th>Seguro Bancario</th>
+            <th>Periodo</th>
+            <th>Contador</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NombreEntidad</td>
+                <td>@item.MontoDeReserva.ToString("C")</td>
+                <td>@item.CantidadDeBeneficiarios</td>
+                <td>@item.MontoDeSeguroBancario.ToString("C")</td>
+                <td>@item.Periodo.ToString("MM/yyyy")</td>
+                <td>@item.NombreContador</td>
+                <td>
+                    <span class="badge
+                        @(item.Estado == 1 ? "bg-success" :
+                          item.Estado == 2 ? "bg-warning" :
+                          item.Estado == 3 ? "bg-info" : "bg-secondary")">
+                        @(item.Estado == 1 ? "Registrado" :
+                          item.Estado == 2 ? "En Alerta" :
+                          item.Estado == 3 ? "Modificado" :
+                          "Desconocido")
+                    </span>
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "EditarReservaLiquidez", new { IdReservaLiquidez = item.IdReservaLiquidez }, new { @class = "btn btn-warning btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

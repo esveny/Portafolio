@@ -1,0 +1,83 @@
+﻿@model Grupo404.Abstracciones.ModelosParaUI.BitacoraEventosDto
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>BitacoraEventosDto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdEvento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdEvento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TablaDeEvento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TablaDeEvento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoDeEvento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDeEvento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaDeEvento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaDeEvento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionDeEvento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionDeEvento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StackTrace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StackTrace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatosAnteriores)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatosAnteriores)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatosPosteriores)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatosPosteriores)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(
+        "Regresar",                
+        "ListarBitacoraEventos", null, new { @class = "btn btn-secondary" })   
+</p>

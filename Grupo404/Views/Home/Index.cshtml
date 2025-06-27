@@ -1,0 +1,87 @@
+﻿@{
+
+    ViewBag.Title = "Home Page";
+
+}
+
+<style>
+
+    .hero-section {
+        background-size: cover;
+        background-image: url('../../content/images/imagen-pa-progra-v2.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        padding: 2rem;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5); 
+
+        z-index: 0;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .card-section {
+        padding: 4rem 1rem;
+        background-color: #f8f9fa;
+    }
+</style>
+
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h2 class="display-4 fw-bold">Bienvenido a <strong>ContSafe</strong></h2>
+        <p class="lead">Solución integral para la gestión segura de entidades financieras, reservas de liquidez y trazabilidad.</p>
+    </div>
+</div>
+
+<div class="card-section">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Gestión de Entidades</h5>
+                    <p class="card-text">Administra entidades registradas y su clasificación en tipos específicos.</p>
+                    <a href="@Url.Action("ListarEntidades", "Entidades")" class="btn btn-outline-primary">Ir a Entidades</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Reserva de Liquidez</h5>
+                    <p class="card-text">Consulta, registra y actualiza reservas de liquidez de manera segura.</p>
+                    <a href="@Url.Action("ListarReservaLiquidez", "ReservaLiquidez")" class="btn btn-outline-primary">Ver Reservas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Bitácora de Eventos</h5>
+                    <p class="card-text">Monitorea todos los cambios importantes con trazabilidad y control.</p>
+                    <a href="@Url.Action("ListarBitacoraEventos", "BitacoraEventos")" class="btn btn-outline-primary">Ver Bitácora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

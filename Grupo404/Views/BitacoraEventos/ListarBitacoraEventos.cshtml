@@ -1,0 +1,73 @@
+@model IEnumerable<Grupo404.Abstracciones.ModelosParaUI.BitacoraEventosDto>
+
+@{
+    ViewBag.Title = "ListarBitacoraEventos";
+}
+
+<h2>ListarBitacoraEventos</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdEvento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TablaDeEvento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoDeEvento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaDeEvento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionDeEvento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StackTrace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatosAnteriores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatosPosteriores)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TablaDeEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoDeEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDeEvento)
+            </td>
+            <td>
+                @(item.DescripcionDeEvento != null && item.DescripcionDeEvento.Length > 5 ? item.DescripcionDeEvento.Substring(0, 5) + "..." : item.DescripcionDeEvento)
+            </td>
+            <td>
+                @(item.StackTrace != null && item.StackTrace.Length > 5 ? item.StackTrace.Substring(0, 5) + "..." : item.StackTrace)
+            </td>
+            <td>
+                @(item.DatosAnteriores != null && item.DatosAnteriores.Length > 5 ? item.DatosAnteriores.Substring(0, 5) + "..." : item.DatosAnteriores)
+            </td>
+            <td>
+                @(item.DatosPosteriores != null && item.DatosPosteriores.Length > 5 ? item.DatosPosteriores.Substring(0, 5) + "..." : item.DatosPosteriores)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.IdEvento }, new { @class = "btn btn-info" })
+            </td>
+
+        </tr>
+    }
+
+</table>

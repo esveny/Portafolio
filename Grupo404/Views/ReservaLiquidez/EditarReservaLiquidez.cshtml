@@ -1,0 +1,70 @@
+﻿@model Grupo404.Abstracciones.ModelosParaUI.ReservaLiquidezDto
+
+@{
+    ViewBag.Title = "Editar Reserva de Liquidez";
+}
+
+<h2>Editar Reserva de Liquidez</h2>
+
+@using (Html.BeginForm("EditarReservaLiquidez", "ReservaLiquidez", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.IdReservaLiquidez)
+    @Html.HiddenFor(model => model.Estado) <!-- Estado se asigna automáticamente -->
+
+    <div class="form-horizontal">
+        <div id="advertencias-container"></div>
+
+        <h4>Reserva de Liquidez</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdEntidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.IdEntidad,
+                    ViewBag.Entidades as IEnumerable<SelectListItem>,
+                    "-- Seleccione una entidad --",
+                    new { @class = "form-control", @disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.IdEntidad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MontoDeReserva, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MontoDeReserva, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MontoDeReserva, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CantidadDeBeneficiarios, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CantidadDeBeneficiarios, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CantidadDeBeneficiarios, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MontoDeSeguroBancario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MontoDeSeguroBancario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MontoDeSeguroBancario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar cambios" class="btn btn-primary" />
+                @Html.ActionLink("Cancelar", "ListarReservaLiquidez", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/ValidacionReserva/ValidacionReserva.js"></script>
+    <script src="~/Scripts/ValidacionAlertas/ValidacionAlertas.js"></script>
+}

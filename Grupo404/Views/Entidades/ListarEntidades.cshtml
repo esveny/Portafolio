@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Grupo404.Abstracciones.ModelosParaUI.EntidadesDto>
+
+@{
+    ViewBag.Title = "Listado de Entidades";
+    
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        .container-custom {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #00796b;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: #00796b;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #004d40;
+            }
+
+        .table > thead {
+            background-color: #b2dfdb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-custom">
+        <h2>Entidades Registradas</h2>
+
+        <p class="text-end">
+            @Html.ActionLink("Registrar Nueva Entidad", "RegistrarEntidades", null, new { @class = "btn btn-primary" })
+        </p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.CodigoEntidad)</th>
+                    <th>@Html.DisplayNameFor(model => model.NombreEntidad)</th>
+                    <th>@Html.DisplayNameFor(model => model.FechaDeRegistro)</th>
+                    <th>Tipo de Entidad</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CodigoEntidad</td>
+                        <td>@item.NombreEntidad</td>
+                        <td>@item.FechaDeRegistro.ToString("dd/MM/yyyy")</td>
+                        <td>@item.NombreTipoEntidad</td>
+                        <td>
+                            <span class="badge @(item.Estado ? "bg-success" : "bg-danger")">
+                                @(item.Estado ? "Activo" : "Inactivo")
+                            </span>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "EditarEntidades", new { id = item.IdEntidad }, new { @class = "btn btn-warning btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

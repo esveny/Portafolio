@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Grupo404.Abstracciones.ModelosParaUI.AlertasDto>
+
+@{
+    ViewBag.Title = "Alertas Generadas";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary">Alertas Generadas</h2>
+        
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            No se han generado alertas por reglas incumplidas.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped shadow-sm">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th style="white-space: nowrap;">Entidad Financiera</th>
+                        <th style="white-space: nowrap;">Periodo</th>
+                        <th style="white-space: nowrap;">Contador Responsable</th>
+                        <th style="white-space: nowrap;">Reglas Incumplidas</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="text-center align-middle">
+                            <td>@Html.DisplayFor(modelItem => item.NombreEntidad)</td>
+                            <td>@item.Periodo.ToString("MMMM yyyy")</td>
+                            <td>@Html.DisplayFor(modelItem => item.NombreContador)</td>
+                            <td>
+                                <span class="badge bg-danger fs-6">
+                                    @item.CantidadDeReglasIncumplidas
+                                </span>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

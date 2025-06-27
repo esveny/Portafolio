@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\Grupo404\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\Grupo404\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6805A36C-3B69-4849-928F-1337C55E1DFD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Grupo404.AccesoADatos</RootNamespace>
+    <AssemblyName>Grupo404.AccesoADatos</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\Grupo404\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\Grupo404\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alertas\CrearAlertas\CrearAlertasAD.cs" />
+    <Compile Include="Alertas\ListarAlertas\ListarAlertasDA.cs" />
+    <Compile Include="BitacoraEventos\ListarBitacoraEventos\ListarBitacoraEventosAD.cs" />
+    <Compile Include="BitacoraEventos\CrearBitacoraEventos\CrearBitacoraEventosAD.cs" />
+    <Compile Include="BitacoraEventos\ListarBitacoraEventos\ListarBitacoraEventosAD.cs" />
+    <Compile Include="Contador\ActualizarContador\EditarContadorAD.cs" />
+    <Compile Include="Contador\CrearContador\CrearContadorAD.cs" />
+    <Compile Include="Contador\ListarContador\ListarContadorAD.cs" />
+    <Compile Include="Contexto.cs" />
+    <Compile Include="Entidades\EditarEntidades\EditarEntidadesAD.cs" />
+    <Compile Include="Entidades\ListarEntidades\ListarEntidadesAD.cs" />
+    <Compile Include="Entidades\ObtenerEntidadesPorID\ObtenerEntidadesPorIDAD.cs" />
+    <Compile Include="Entidades\RegistrarEntidades\RegistrarEntidadesAD.cs" />
+    <Compile Include="Modelos\AlertasDA.cs" />
+    <Compile Include="Modelos\BitacoraEventosDA.cs" />
+    <Compile Include="Modelos\ContadorDA.cs" />
+    <Compile Include="Modelos\EntidadesAD.cs" />
+    <Compile Include="Modelos\ReglasDA.cs" />
+    <Compile Include="Modelos\ReservaLiquidezDA.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reglas\ActualizarReglas\ActualizarReglasAD.cs" />
+    <Compile Include="Reglas\CrearReglas\CrearReglasAD.cs" />
+    <Compile Include="Reglas\ListarReglas\ListarReglasAD.cs" />
+    <Compile Include="ReservaLiquidez\EditarReservaLiquidez\EditarReservaLiquidezAD.cs" />
+    <Compile Include="ReservaLiquidez\ListarReservaLiquidezAD\ListarReservaLiquidezAD.cs" />
+    <Compile Include="ReservaLiquidez\ObtenerReservaPorID\ObtenerReservaPorIDAD.cs" />
+    <Compile Include="ReservaLiquidez\RegistrarReservaLiquidez\RegistrarReservaLiquidezAD.cs" />
+    <Compile Include="TipoEntidades\CrearTipoEntidadesAD\CrearTipoEntidadesAD.cs" />
+    <Compile Include="TipoEntidades\EditarTipoEntidades\EditarTipoEntidadesAD.cs" />
+    <Compile Include="Modelos\EntidadesAD.cs" />
+    <Compile Include="Modelos\TipoEntidadesDA.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoEntidades\CrearTipoEntidadesAD\CrearTipoEntidadesAD.cs" />
+    <Compile Include="TipoEntidades\CrearTipoEntidadesAD\CrearTipoEntidadesAD.cs" />
+    <Compile Include="TipoEntidades\EditarTipoEntidades\EditarTipoEntidadesAD.cs" />
+    <Compile Include="TipoEntidades\ListarTipoEntidades\ListarTipoEntidadesAD.cs" />
+    <Compile Include="TipoEntidades\ObtenerTipoEntidadesPorId\ObtenerTipoEntidadesPorIdAD.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Grupo404.Abstracciones\Grupo404.Abstracciones.csproj">
+      <Project>{B3C92BB6-BAE6-4738-940E-4ED5D0956E3F}</Project>
+      <Name>Grupo404.Abstracciones</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\Grupo404\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\Grupo404\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\Grupo404\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Grupo404\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\Grupo404\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\Grupo404\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>

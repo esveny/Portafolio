@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ContSafe</title>
+    <link href="~/Content/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 20px;
+        }
+
+        .body-content {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+        }
+
+        h2 {
+            color: #00796b;
+            margin-bottom: 30px;
+        }
+
+        .table > thead {
+            background-color: #b2dfdb;
+        }
+
+        .btn-primary {
+            background-color: #00796b;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #004d40;
+            }
+
+        footer {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("ContSafe", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Administrador"))
+                        {
+                            <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Entidades", "ListarEntidades", "Entidades", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Tipo De Entidades", "ListarTipoEntidades", "TipoEntidades", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Bitacora Eventos", "ListarBitacoraEventos", "BitacoraEventos", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Contadores", "ListarContador", "Contador", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Reserva de Liquidez", "ListarReservaLiquidez", "ReservaLiquidez", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Alertas", "ListarAlertas", "Alertas", new { area = "" }, new { @class = "nav-link" })</li>
+
+                        }
+                        if (User.IsInRole("Contador"))
+                        {
+                            <li>@Html.ActionLink("Listar Reserva de Liquidez", "ListarReservaLiquidez", "ReservaLiquidez", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ContSafe</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

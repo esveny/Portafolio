@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B3C92BB6-BAE6-4738-940E-4ED5D0956E3F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Grupo404.Abstracciones</RootNamespace>
+    <AssemblyName>Grupo404.Abstracciones</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccesoADatos\Alertas\CrearAlertas\ICrearAlertasAD.cs" />
+    <Compile Include="AccesoADatos\Alertas\ListarAlertas\IListarAlertasDA.cs" />
+    <Compile Include="AccesoADatos\BitacoraEventos\CrearBitacoraEventosAD\ICrearBitacoraEventosAD.cs" />
+    <Compile Include="AccesoADatos\BitacoraEventos\ListarBitacoraEventos\IListarBitacoraEventosAD.cs" />
+    <Compile Include="AccesoADatos\Contador\ActualizarContador\IEditarContadorAD.cs" />
+    <Compile Include="AccesoADatos\Contador\CrearContador\ICrearContadorAD.cs" />
+    <Compile Include="AccesoADatos\Contador\ListarContador\IListarContadorAD.cs" />
+    <Compile Include="AccesoADatos\Entidades\EditarEntidades\IEditarEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\Entidades\ListarEntidades\IListarEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\Entidades\ObtenerEntidadesPorID\IObtenerEntidadesPorIDAD.cs" />
+    <Compile Include="AccesoADatos\Entidades\RegistrarEntidades\IRegistrarEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\Reglas\ActualizarReglas\IActualizarReglasAD.cs" />
+    <Compile Include="AccesoADatos\Reglas\CrearReglas\ICrearReglasAD.cs" />
+    <Compile Include="AccesoADatos\Reglas\ListarReglas\IListarReglasAD.cs" />
+    <Compile Include="AccesoADatos\ReservaLiquidez\EditarReservaLiquidez\IEditarReservaLiquidezAD.cs" />
+    <Compile Include="AccesoADatos\ReservaLiquidez\ListarReservaLiquidez\IListarReservaLiquidezAD.cs" />
+    <Compile Include="AccesoADatos\ReservaLiquidez\ObtenerReservaPorID\IObtenerReservaPorIDAD.cs" />
+    <Compile Include="AccesoADatos\ReservaLiquidez\RegistrarReservaLiquidez\IRegistrarReservaLiquidezAD.cs" />
+    <Compile Include="AccesoADatos\TipoEntidades\CrearTipoEntidades\ICrearTipoEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\TipoEntidades\EditarTipoEntidades\IEditarTipoEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\TipoEntidades\ListarTipoEntidades\IListarTipoEntidadesAD.cs" />
+    <Compile Include="LogicaDeNegocio\Alertas\CrearAlertas\ICrearAlertasLN.cs" />
+    <Compile Include="LogicaDeNegocio\Alertas\ListarAlertas\IListarAlertasLN.cs" />
+    <Compile Include="LogicaDeNegocio\BitacoraEventos\CrearBitacoraEventos\ICrearBitacoraEventosLN.cs" />
+    <Compile Include="LogicaDeNegocio\BitacoraEventos\ListarBitacoraEventos\IListarBitacoraEventosLN.cs" />
+    <Compile Include="AccesoADatos\TipoEntidades\ObtenerTipoEntidadesPorId\IObtenerTipoEntidadesPorIdAD.cs" />
+    <Compile Include="LogicaDeNegocio\Contador\ActualizarContador\IEditarContadorLN.cs" />
+    <Compile Include="LogicaDeNegocio\Contador\CrearContador\ICrearContadorLN.cs" />
+    <Compile Include="LogicaDeNegocio\Contador\ListarContador\IListarContadorLN.cs" />
+    <Compile Include="LogicaDeNegocio\Entidades\EditarEntidades\IEditarEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\Entidades\ListarEntidades\IListarEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\Entidades\ObtenerEntidadesPorID\IObtenerEntidadesPorIDLN.cs" />
+    <Compile Include="LogicaDeNegocio\Entidades\RegistrarEntidades\IRegistrarEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\Reglas\ActualizarReglas\IActualizarReglasLN.cs" />
+    <Compile Include="LogicaDeNegocio\Reglas\CrearReglas\ICrearReglasLN.cs" />
+    <Compile Include="LogicaDeNegocio\Reglas\ListarReglas\IListarReglasLN.cs" />
+    <Compile Include="LogicaDeNegocio\ReservaLiquidez\EditarReservaLiquidez\IEditarReservaLiquidezLN.cs" />
+    <Compile Include="LogicaDeNegocio\ReservaLiquidez\ListarReservaLiquidez\IListarReservaLiquidezLN.cs" />
+    <Compile Include="LogicaDeNegocio\ReservaLiquidez\ListarReservaLiquidez\IListarReservaLiquidezLN.cs" />
+    <Compile Include="LogicaDeNegocio\ReservaLiquidez\ObtenerReservaPorID\IObtenerReservaPorIDLN.cs" />
+    <Compile Include="LogicaDeNegocio\ReservaLiquidez\RegistrarReservaLiquidez\IRegistrarReservaLiquidezLN.cs" />
+    <Compile Include="LogicaDeNegocio\TipoEntidades\CrearTipoEntidades\ICrearTipoEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\TipoEntidades\EditarTipoEntidades\IEditarTipoEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\General\Fechas\IFecha.cs" />
+    <Compile Include="LogicaDeNegocio\TipoEntidades\ListarTipoEntidades\IListarTipoEntidadesLN.cs" />
+    <Compile Include="ModelosParaUI\AlertasDto.cs" />
+    <Compile Include="ModelosParaUI\BitacoraEventosDto.cs" />
+    <Compile Include="AccesoADatos\Entidades\EditarEntidades\IEditarEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\Entidades\ListarEntidades\IListarEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\Entidades\RegistrarEntidades\IRegistrarEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\TipoEntidades\CrearTipoEntidades\ICrearTipoEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\TipoEntidades\EditarTipoEntidades\IEditarTipoEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\TipoEntidades\CrearTipoEntidades\ICrearTipoEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\TipoEntidades\ListarTipoEntidades\IListarTipoEntidadesAD.cs" />
+    <Compile Include="AccesoADatos\TipoEntidades\ObtenerTipoEntidadesPorId\IObtenerTipoEntidadesPorIdAD.cs" />
+    <Compile Include="LogicaDeNegocio\Entidades\EditarEntidades\IEditarEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\Entidades\ListarEntidades\IListarEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\TipoEntidades\CrearTipoEntidades\ICrearTipoEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\TipoEntidades\EditarTipoEntidades\IEditarTipoEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\TipoEntidades\CrearTipoEntidades\ICrearTipoEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\TipoEntidades\ListarTipoEntidades\IListarTipoEntidadesLN.cs" />
+    <Compile Include="LogicaDeNegocio\TipoEntidades\ObtenerTipoEntidadesPorId\IObtenerTipoEntidadesPorIdLN.cs" />
+    <Compile Include="ModelosParaUI\ContadorDto.cs" />
+    <Compile Include="ModelosParaUI\EntidadesDto.cs" />
+    <Compile Include="ModelosParaUI\ReglasDto.cs" />
+    <Compile Include="ModelosParaUI\ReservaLiquidezDto.cs" />
+    <Compile Include="ModelosParaUI\TipoEntidadesDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
